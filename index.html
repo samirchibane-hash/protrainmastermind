@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<title>Pro Train Mastermind</title>
+<script src="/support.js"></script>
 </head>
 <body>
 <x-dc>
@@ -25,7 +26,7 @@
 
   <!-- header -->
   <div style="width:100%;max-width:1180px;display:flex;align-items:center;justify-content:space-between;padding:28px 24px 0;box-sizing:border-box;">
-    <img src="assets/protrain-logo.png" alt="Pro Train" style="height:80px;width:auto;object-fit:contain;" />
+    <img src="/assets/protrain-logo.png" alt="Pro Train" style="height:80px;width:auto;object-fit:contain;" />
     <div style="display:flex;align-items:center;gap:8px;background:rgba(232,180,35,0.1);border:1px solid rgba(232,180,35,0.35);border-radius:999px;padding:8px 16px;">
       <span style="width:8px;height:8px;border-radius:50%;background:{{ accentColor }};display:inline-block;box-shadow:0 0 0 4px rgba(232,180,35,0.15);"></span>
       <span style="font:600 12px/1 'Inter',sans-serif;letter-spacing:0.04em;color:{{ accentColor }};text-transform:uppercase;">Only {{ spotsLeft }} spots left this cohort</span>
@@ -41,7 +42,7 @@
     <p style="font:400 18px/1.55 'Inter',sans-serif;color:rgba(247,246,243,0.72);max-width:680px;margin:0 0 32px;text-wrap:pretty;">
       There's a hidden goldmine in your town: <strong style="color:#f7f6f3;font-weight:600;">youth speed training.</strong> Parents happily pay $3,000 packages. Kids never cancel. This is the exact blueprint a burnt-out trainer used to build a 7-figure business &mdash; and how you can copy it.
     </p>
-    <a href="#" onClick="{{ goToStep2 }}" style="display:inline-flex;align-items:center;gap:10px;background:{{ accentColor }};color:#0b0b0c;font:700 17px/1 'Inter',sans-serif;padding:19px 34px;border-radius:8px;box-shadow:0 12px 30px -8px rgba(232,180,35,0.5);" style-hover="background:#f5cc3f;transform:translateY(-1px);">
+    <a href="/schedule" style="display:inline-flex;align-items:center;gap:10px;background:{{ accentColor }};color:#0b0b0c;font:700 17px/1 'Inter',sans-serif;padding:19px 34px;border-radius:8px;box-shadow:0 12px 30px -8px rgba(232,180,35,0.5);" style-hover="background:#f5cc3f;transform:translateY(-1px);">
       {{ ctaText }} <span style="font-size:20px;">&rarr;</span>
     </a>
     <div style="margin-top:14px;font:500 13px/1 'Inter',sans-serif;color:rgba(247,246,243,0.4);">Free application &middot; No cost, no obligation &middot; 20-minute call</div>
@@ -81,7 +82,7 @@
     <div style="background:linear-gradient(180deg,#161616,#0f0f10);border:1px solid rgba(232,180,35,0.25);border-radius:20px;padding:44px 32px;">
       <h2 style="font:600 clamp(22px,3vw,32px)/1.15 'Oswald',sans-serif;color:#f7f6f3;text-transform:uppercase;margin:0 0 14px;">Stop Trading Hours For Dollars.</h2>
       <p style="font:400 16px/1.6 'Inter',sans-serif;color:rgba(247,246,243,0.65);max-width:520px;margin:0 auto 28px;">This is a $5,000 premium mastermind for trainers dead serious about building a real business. Applications are reviewed &mdash; only {{ spotsLeft }} spots remain this cohort.</p>
-      <a href="#" onClick="{{ goToStep2 }}" style="display:inline-flex;align-items:center;gap:10px;background:{{ accentColor }};color:#0b0b0c;font:700 17px/1 'Inter',sans-serif;padding:19px 34px;border-radius:8px;" style-hover="background:#f5cc3f;">
+      <a href="/schedule" style="display:inline-flex;align-items:center;gap:10px;background:{{ accentColor }};color:#0b0b0c;font:700 17px/1 'Inter',sans-serif;padding:19px 34px;border-radius:8px;" style-hover="background:#f5cc3f;">
         {{ ctaText }} <span style="font-size:20px;">&rarr;</span>
       </a>
     </div>
@@ -89,7 +90,7 @@
 
   <!-- footer -->
   <div style="width:100%;max-width:1180px;padding:48px 24px 40px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:10px;">
-    <img src="assets/protrain-logo.png" alt="Pro Train" style="height:56px;width:auto;object-fit:contain;opacity:0.7;" />
+    <img src="/assets/protrain-logo.png" alt="Pro Train" style="height:56px;width:auto;object-fit:contain;opacity:0.7;" />
     <div style="font:400 12px/1.5 'Inter',sans-serif;color:rgba(247,246,243,0.3);text-align:center;">&copy; 2026 Pro Train Mastermind. Results vary based on individual effort and market.</div>
   </div>
 
@@ -100,8 +101,8 @@
 <div style="display:flex;flex-direction:column;align-items:center;min-height:100vh;">
 
   <div style="width:100%;max-width:1180px;display:flex;align-items:center;justify-content:space-between;padding:28px 24px 0;box-sizing:border-box;">
-    <img src="assets/protrain-logo.png" alt="Pro Train" style="height:80px;width:auto;object-fit:contain;" />
-    <a href="#" onClick="{{ goToStep1 }}" style="font:500 13px/1 'Inter',sans-serif;color:rgba(247,246,243,0.5);">&larr; Back</a>
+    <a href="/"><img src="/assets/protrain-logo.png" alt="Pro Train" style="height:80px;width:auto;object-fit:contain;" /></a>
+    <a href="/" style="font:500 13px/1 'Inter',sans-serif;color:rgba(247,246,243,0.5);">&larr; Back</a>
   </div>
 
   <div style="width:100%;max-width:720px;padding:52px 24px 8px;box-sizing:border-box;text-align:center;">
@@ -129,11 +130,16 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#e8b423&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#e8b423&quot;,&quot;#f5cc3f&quot;,&quot;#d99a1f&quot;]},&quot;ctaText&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Book Your Strategy Call&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;spotsLeft&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:6,&quot;min&quot;:1,&quot;max&quot;:20,&quot;tsType&quot;:&quot;number&quot;}}">
 class Component extends DCLogic {
-  state = { step: 1 };
+  state = { step: Component.initialStep() };
+
+  static initialStep() {
+    if (typeof window === 'undefined') return 1;
+    const path = window.location.pathname.replace(/\/+$/, '');
+    const stepParam = new URLSearchParams(window.location.search).get('step');
+    return (path.endsWith('/schedule') || stepParam === '2') ? 2 : 1;
+  }
 
   componentDidMount() {
-    const s = new URLSearchParams(window.location.search).get('step');
-    if (s === '2') this.setState({ step: 2 });
     if (!document.getElementById('gh-form-embed-script')) {
       const sc = document.createElement('script');
       sc.id = 'gh-form-embed-script';
@@ -141,9 +147,6 @@ class Component extends DCLogic {
       document.body.appendChild(sc);
     }
   }
-
-  goToStep2 = (e) => { e.preventDefault(); this.setState({ step: 2 }); window.scrollTo(0,0); };
-  goToStep1 = (e) => { e.preventDefault(); this.setState({ step: 1 }); window.scrollTo(0,0); };
 
   renderVals() {
     const accentColor = this.props.accentColor ?? '#e8b423';
@@ -153,8 +156,6 @@ class Component extends DCLogic {
       isStep1: this.state.step === 1,
       isStep2: this.state.step === 2,
       accentColor, ctaText, spotsLeft,
-      goToStep1: this.goToStep1,
-      goToStep2: this.goToStep2,
       chips: [
         { stat: '$0', label: 'Upfront to launch your first facility' },
         { stat: '$3K', label: 'Average package sold per athlete' },
