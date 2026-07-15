@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pro Train Mastermind</title>
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;background:#0b0b0c;font-family:'Inter',sans-serif;}
+  a{color:{{ accentColor }};text-decoration:none;}
+  a:hover{color:#fff;}
+  ::selection{background:{{ accentColor }};color:#0b0b0c;}
+</style>
+</helmet>
+
+<div style="background:#0b0b0c;min-height:100vh;width:100%;position:relative;overflow-x:hidden;">
+
+<sc-if value="{{ isStep1 }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;align-items:center;">
+
+  <!-- header -->
+  <div style="width:100%;max-width:1180px;display:flex;align-items:center;justify-content:space-between;padding:28px 24px 0;box-sizing:border-box;">
+    <img src="/assets/protrain-logo.png" alt="Pro Train" style="height:80px;width:auto;object-fit:contain;" />
+    <div style="display:flex;align-items:center;gap:8px;background:rgba(232,180,35,0.1);border:1px solid rgba(232,180,35,0.35);border-radius:999px;padding:8px 16px;">
+      <span style="width:8px;height:8px;border-radius:50%;background:{{ accentColor }};display:inline-block;box-shadow:0 0 0 4px rgba(232,180,35,0.15);"></span>
+      <span style="font:600 12px/1 'Inter',sans-serif;letter-spacing:0.04em;color:{{ accentColor }};text-transform:uppercase;">Only {{ spotsLeft }} spots left this cohort</span>
+    </div>
+  </div>
+
+  <!-- hero -->
+  <div style="width:100%;max-width:900px;padding:56px 24px 8px;box-sizing:border-box;text-align:center;display:flex;flex-direction:column;align-items:center;">
+    <div style="font:700 13px/1 'Inter',sans-serif;letter-spacing:0.14em;color:{{ accentColor }};text-transform:uppercase;margin-bottom:18px;">For Personal Trainers Ready To Escape The Grind</div>
+    <h1 style="font:600 clamp(34px,5.2vw,58px)/1.08 'Oswald',sans-serif;color:#f7f6f3;text-transform:uppercase;margin:0 0 20px;letter-spacing:0.01em;text-wrap:pretty;">
+      You're Playing The Fitness Game<br/>On <span style="color:{{ accentColor }};">Hard Mode.</span>
+    </h1>
+    <p style="font:400 18px/1.55 'Inter',sans-serif;color:rgba(247,246,243,0.72);max-width:680px;margin:0 0 32px;text-wrap:pretty;">
+      There's a hidden goldmine in your town: <strong style="color:#f7f6f3;font-weight:600;">youth speed training.</strong> Parents happily pay $3,000 packages. Kids never cancel. This is the exact blueprint a burnt-out trainer used to build a 7-figure business &mdash; and how you can copy it.
+    </p>
+    <a href="/schedule" style="display:inline-flex;align-items:center;gap:10px;background:{{ accentColor }};color:#0b0b0c;font:700 17px/1 'Inter',sans-serif;padding:19px 34px;border-radius:8px;box-shadow:0 12px 30px -8px rgba(232,180,35,0.5);" style-hover="background:#f5cc3f;transform:translateY(-1px);">
+      {{ ctaText }} <span style="font-size:20px;">&rarr;</span>
+    </a>
+    <div style="margin-top:14px;font:500 13px/1 'Inter',sans-serif;color:rgba(247,246,243,0.4);">Free application &middot; No cost, no obligation &middot; 20-minute call</div>
+  </div>
+
+  <!-- video -->
+  <div style="width:100%;max-width:900px;padding:40px 24px 0;box-sizing:border-box;">
+    <div style="position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);box-shadow:0 30px 70px -30px rgba(0,0,0,0.8);">
+      <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" src="https://www.youtube.com/embed/rKvWFodvBVc?si=a3-aO2VcrP3Z8JU1" title="Pro Train Mastermind VSL" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- quick feature chips -->
+  <div style="width:100%;max-width:900px;padding:44px 24px 0;box-sizing:border-box;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+    <sc-for list="{{ chips }}" as="chip" hint-placeholder-count="3">
+      <div style="background:#141416;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:22px 18px;text-align:center;">
+        <div style="font:600 24px/1 'Oswald',sans-serif;color:{{ accentColor }};margin-bottom:8px;">{{ chip.stat }}</div>
+        <div style="font:500 13px/1.4 'Inter',sans-serif;color:rgba(247,246,243,0.65);">{{ chip.label }}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- proof placeholder -->
+  <div style="width:100%;max-width:900px;padding:56px 24px 0;box-sizing:border-box;">
+    <div style="text-align:center;font:700 12px/1 'Inter',sans-serif;letter-spacing:0.14em;color:rgba(247,246,243,0.4);text-transform:uppercase;margin-bottom:20px;">Trusted by trainers who made the switch</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <sc-for list="{{ proofSlots }}" as="p" hint-placeholder-count="3">
+        <div style="background:repeating-linear-gradient(135deg,#141416,#141416 10px,#1a1a1d 10px,#1a1a1d 20px);border:1px dashed rgba(255,255,255,0.15);border-radius:12px;padding:24px 16px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
+          <span style="font:600 11px/1 'monospace';letter-spacing:0.04em;color:rgba(247,246,243,0.4);text-transform:uppercase;">{{ p.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- second CTA -->
+  <div style="width:100%;max-width:900px;padding:56px 24px 0;box-sizing:border-box;text-align:center;">
+    <div style="background:linear-gradient(180deg,#161616,#0f0f10);border:1px solid rgba(232,180,35,0.25);border-radius:20px;padding:44px 32px;">
+      <h2 style="font:600 clamp(22px,3vw,32px)/1.15 'Oswald',sans-serif;color:#f7f6f3;text-transform:uppercase;margin:0 0 14px;">Stop Trading Hours For Dollars.</h2>
+      <p style="font:400 16px/1.6 'Inter',sans-serif;color:rgba(247,246,243,0.65);max-width:520px;margin:0 auto 28px;">This is a $5,000 premium mastermind for trainers dead serious about building a real business. Applications are reviewed &mdash; only {{ spotsLeft }} spots remain this cohort.</p>
+      <a href="/schedule" style="display:inline-flex;align-items:center;gap:10px;background:{{ accentColor }};color:#0b0b0c;font:700 17px/1 'Inter',sans-serif;padding:19px 34px;border-radius:8px;" style-hover="background:#f5cc3f;">
+        {{ ctaText }} <span style="font-size:20px;">&rarr;</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div style="width:100%;max-width:1180px;padding:48px 24px 40px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:10px;">
+    <img src="/assets/protrain-logo.png" alt="Pro Train" style="height:56px;width:auto;object-fit:contain;opacity:0.7;" />
+    <div style="font:400 12px/1.5 'Inter',sans-serif;color:rgba(247,246,243,0.3);text-align:center;">&copy; 2026 Pro Train Mastermind. Results vary based on individual effort and market.</div>
+  </div>
+
+</div>
+</sc-if>
+
+<sc-if value="{{ isStep2 }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;align-items:center;min-height:100vh;">
+
+  <div style="width:100%;max-width:1180px;display:flex;align-items:center;justify-content:space-between;padding:28px 24px 0;box-sizing:border-box;">
+    <a href="/"><img src="/assets/protrain-logo.png" alt="Pro Train" style="height:80px;width:auto;object-fit:contain;" /></a>
+    <a href="/" style="font:500 13px/1 'Inter',sans-serif;color:rgba(247,246,243,0.5);">&larr; Back</a>
+  </div>
+
+  <div style="width:100%;max-width:720px;padding:52px 24px 8px;box-sizing:border-box;text-align:center;">
+    <div style="font:700 13px/1 'Inter',sans-serif;letter-spacing:0.14em;color:{{ accentColor }};text-transform:uppercase;margin-bottom:16px;">Application Received &middot; Step 2 of 2</div>
+    <h1 style="font:600 clamp(28px,4vw,42px)/1.15 'Oswald',sans-serif;color:#f7f6f3;text-transform:uppercase;margin:0 0 16px;">You're One Step Closer.</h1>
+    <p style="font:400 16px/1.6 'Inter',sans-serif;color:rgba(247,246,243,0.65);max-width:560px;margin:0 auto 8px;">Pick a time below. We'll walk through your local market, your goals, and whether the Pro Train Mastermind is the right fit &mdash; no pressure, no obligation.</p>
+  </div>
+
+  <div style="width:100%;max-width:900px;padding:32px 24px 60px;box-sizing:border-box;">
+    <div style="background:#141416;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:8px;overflow:hidden;">
+      <iframe src="https://api.leadconnectorhq.com/widget/booking/fydxTMNP5QdPaeqIm50x" style="width:100%;min-height:780px;border:none;overflow:hidden;border-radius:10px;" scrolling="no" id="fydxTMNP5QdPaeqIm50x_1784063767341"></iframe>
+    </div>
+    <div style="display:flex;justify-content:center;gap:28px;margin-top:24px;flex-wrap:wrap;">
+      <div style="font:500 13px/1 'Inter',sans-serif;color:rgba(247,246,243,0.45);">&#9679; 20-minute call</div>
+      <div style="font:500 13px/1 'Inter',sans-serif;color:rgba(247,246,243,0.45);">&#9679; No cost to apply</div>
+      <div style="font:500 13px/1 'Inter',sans-serif;color:rgba(247,246,243,0.45);">&#9679; 1-on-1 with the Pro Train team</div>
+    </div>
+  </div>
+
+</div>
+</sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#e8b423&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#e8b423&quot;,&quot;#f5cc3f&quot;,&quot;#d99a1f&quot;]},&quot;ctaText&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Book Your Strategy Call&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;spotsLeft&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:6,&quot;min&quot;:1,&quot;max&quot;:20,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  state = { step: Component.initialStep() };
+
+  static initialStep() {
+    if (typeof window === 'undefined') return 1;
+    const path = window.location.pathname.replace(/\/+$/, '');
+    const stepParam = new URLSearchParams(window.location.search).get('step');
+    return (path.endsWith('/schedule') || stepParam === '2') ? 2 : 1;
+  }
+
+  componentDidMount() {
+    if (!document.getElementById('gh-form-embed-script')) {
+      const sc = document.createElement('script');
+      sc.id = 'gh-form-embed-script';
+      sc.src = 'https://link.msgsndr.com/js/form_embed.js';
+      document.body.appendChild(sc);
+    }
+  }
+
+  renderVals() {
+    const accentColor = this.props.accentColor ?? '#e8b423';
+    const ctaText = this.props.ctaText ?? 'Book Your Strategy Call';
+    const spotsLeft = this.props.spotsLeft ?? 6;
+    return {
+      isStep1: this.state.step === 1,
+      isStep2: this.state.step === 2,
+      accentColor, ctaText, spotsLeft,
+      chips: [
+        { stat: '$0', label: 'Upfront to launch your first facility' },
+        { stat: '$3K', label: 'Average package sold per athlete' },
+        { stat: '90 Days', label: 'To deliver undeniable speed results' },
+      ],
+      proofSlots: [
+        { label: 'Testimonial' },
+        { label: 'Income Proof' },
+        { label: 'Facility / Athlete Photo' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

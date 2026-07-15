@@ -1,7 +1,4 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    { "source": "/schedule", "destination": "/index.html" }
-  ]
+  "trailingSlash": false
 }
